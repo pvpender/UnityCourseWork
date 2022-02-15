@@ -5,29 +5,53 @@ using UnityEngine;
 public class cameraController : MonoBehaviour
 {
 
-    private float _sensitivityRotationX = 0.9f;
-    private float _sensitivityRotationY = 0.9f;
-    private float minimumX = -360f;
-    private float maximumX = 360f;
-    private float minimumY = -60f;
-    private float maximumY = 60f;
-    private float rotationY = 0F;
-    private float _sensitivityMove = 0.3f;
+    private float _sensitivityRotationX = 1.5f;
+    private float _sensitivityRotationY = 1.5f;
+    private float _minimumX = -360f;
+    private float _maximumX = 360f;
+    private float _minimumY = -60f;
+    private float _maximumY = 60f;
+    private float _rotationY = 0F;
+    private float _mouseScrollSensitivity = 1f;
+    private float _sensitivityMove = 1f;
 
     void Update()
     {
+        if (Input.GetAxis("Mouse ScrollWheel") != 0)
+        {
+            Vector3 pos = transform.position;
+            if (Input.GetAxis("Mouse ScrollWheel") > 0)
+            {
+                pos = transform.position;
+                pos.x += _mouseScrollSensitivity * Mathf.Sin(transform.eulerAngles.y / 57.7f);
+                pos.z += _mouseScrollSensitivity * Mathf.Cos(transform.eulerAngles.y / 57.7f);
+                pos.y -= _mouseScrollSensitivity * Mathf.Sin(transform.eulerAngles.x / 57.7f);
+                transform.position = pos;
+            }
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+            {
+                pos = transform.position;
+                pos.x -= 1f * Mathf.Sin(transform.eulerAngles.y / 57.7f);
+                pos.z -= 1f * Mathf.Cos(transform.eulerAngles.y / 57.7f);
+                pos.y += 1f * Mathf.Sin(transform.eulerAngles.x / 57.7f);
+                transform.position = pos;
+            }
+        }
         if (Input.GetMouseButton(1))
         {   
             float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * _sensitivityRotationX;
-            rotationY += Input.GetAxis("Mouse Y") * _sensitivityRotationY;
-            rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
-            transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
+            _rotationY += Input.GetAxis("Mouse Y") * _sensitivityRotationY;
+            _rotationY = Mathf.Clamp(_rotationY, _minimumY, _maximumY);
+            transform.localEulerAngles = new Vector3(-_rotationY, rotationX, 0);
         }
         if (Input.GetMouseButton(2))
         { 
             Vector3 NewPosition = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0);
             Vector3 pos = transform.position;
-            pos.x -= NewPosition.x * _sensitivityMove;
+            pos.x -= NewPosition.x * Mathf.Cos(transform.eulerAngles.y / 57.7f) * _sensitivityMove;
+            pos.z += NewPosition.x * Mathf.Sin(transform.eulerAngles.y / 57.7f) * _sensitivityMove;
+            pos.y -= NewPosition.y * Mathf.Cos(transform.eulerAngles.x / 57.7f) * _sensitivityMove;
+            //pos.z -= NewPosition.y * Mathf.Sin(transform.eulerAngles.x / 57.7f) * _sensitivityMove;
             transform.position = pos;
 
         }
