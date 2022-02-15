@@ -4,31 +4,34 @@ using UnityEngine;
 
 public class cameraController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private float _sensitivity = 0.1f;
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    private float _sensitivityRotationX = 0.9f;
+    private float _sensitivityRotationY = 0.9f;
+    private float minimumX = -360f;
+    private float maximumX = 360f;
+    private float minimumY = -60f;
+    private float maximumY = 60f;
+    private float rotationY = 0F;
+    private float _sensitivityMove = 0.3f;
+
     void Update()
     {
+        if (Input.GetMouseButton(1))
+        {   
+            float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * _sensitivityRotationX;
+            rotationY += Input.GetAxis("Mouse Y") * _sensitivityRotationY;
+            rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
+            transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
+        }
         if (Input.GetMouseButton(2))
         { 
-            Vector3 NewPosition = new Vector3(Input.GetAxis("Mouse X"), 0, 0);
+            Vector3 NewPosition = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0);
             Vector3 pos = transform.position;
-            if (NewPosition.x < 0.0f)
-            {
-                pos += transform.right * _sensitivity;
-            }
-            else if (NewPosition.x > 0.0f)
-            {
-                pos -= transform.right * _sensitivity;
-            }
+            pos.x -= NewPosition.x * _sensitivityMove;
             transform.position = pos;
+
         }
-        if (Input.GetMouseButtonDown(0))
+        /*if (Input.GetMouseButtonDown(0))
         {
             Vector3 worldPosition = new Vector3(0, 0, 0);
             Plane plane = new Plane(Vector3.up, 0);
@@ -38,7 +41,7 @@ public class cameraController : MonoBehaviour
             {
                 worldPosition = ray.GetPoint(distance);
             }
-            /*Camera.main.transform.Rotate(120, 0, 3);
+            Camera.main.transform.Rotate(120, 0, 3);
             Debug.Log($"{worldPosition.x} {worldPosition.y} {worldPosition.z}");
             GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             cube.transform.position = new Vector3(worldPosition.x, worldPosition.y, worldPosition.z);
@@ -49,7 +52,7 @@ public class cameraController : MonoBehaviour
             Ray newRay = newCam.ScreenPointToRay(Input.mousePosition);
             Vector3 newPos = newRay.GetPoint(distance);
             Debug.Log($"{newPos.x} {newPos.y} {newPos.z}");
-            Destroy(newCam.gameObject);*/
-        }
+            Destroy(newCam.gameObject);
+        }*/
     }
 }
