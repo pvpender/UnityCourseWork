@@ -55,6 +55,38 @@ public class cameraController : MonoBehaviour
             transform.position = pos;
 
         }
+        if (Input.GetMouseButtonDown(0))
+        {
+            Plane planeX = new Plane(Vector3.up, 0);
+            Plane planeY = new Plane(Vector3.fwd, 0);
+            Plane planeZ = new Plane(Vector3.left, 0);
+            float distance;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (planeX.Raycast(ray, out distance))
+            {
+                Debug.Log("X");
+                Vector3 worldPosition = ray.GetPoint(distance);
+                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                cube.transform.position = new Vector3(worldPosition.x, worldPosition.y, worldPosition.z);
+                Debug.Log(worldPosition);
+            }
+            else if (planeY.Raycast(ray, out distance))
+            {
+                Debug.Log("Y");
+                Vector3 worldPosition = ray.GetPoint(distance);
+                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                cube.transform.position = new Vector3(worldPosition.x, worldPosition.y, worldPosition.z);
+                Debug.Log(worldPosition);
+            }
+            else if (planeZ.Raycast(ray, out distance))
+            {
+                Debug.Log("Z");
+                Vector3 worldPosition = ray.GetPoint(distance);
+                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                cube.transform.position = new Vector3(worldPosition.x, worldPosition.y, worldPosition.z);
+                Debug.Log(worldPosition);
+            }
+        }
         /*if (Input.GetMouseButtonDown(0))
         {
             Vector3 worldPosition = new Vector3(0, 0, 0);
