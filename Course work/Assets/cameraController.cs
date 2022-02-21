@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class cameraController : MonoBehaviour
 {
@@ -14,7 +15,16 @@ public class cameraController : MonoBehaviour
     private float _rotationY = 0F;
     private float _mouseScrollSensitivity = 1f;
     private float _sensitivityMove = 1f;
+    private lineController _lineController;
+    private PanelController _panelController;
+    public GameObject line;
+    public GameObject plane;
 
+    private void Start()
+    {
+        _lineController = line.GetComponent<lineController>();
+        _panelController = plane.GetComponent<PanelController>(); 
+    }
     void Update()
     {
         if (Input.GetAxis("Mouse ScrollWheel") != 0)
@@ -60,55 +70,36 @@ public class cameraController : MonoBehaviour
             Plane planeX = new Plane(Vector3.up, 0);
             Plane planeY = new Plane(Vector3.fwd, 0);
             Plane planeZ = new Plane(Vector3.left, 0);
+            Vector3 worldPosition = new Vector3(0, 0, 0);
             float distance;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (planeX.Raycast(ray, out distance))
             {
                 Debug.Log("X");
-                Vector3 worldPosition = ray.GetPoint(distance);
-                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                cube.transform.position = new Vector3(worldPosition.x, worldPosition.y, worldPosition.z);
+                worldPosition = ray.GetPoint(distance);
                 Debug.Log(worldPosition);
             }
             else if (planeY.Raycast(ray, out distance))
             {
                 Debug.Log("Y");
-                Vector3 worldPosition = ray.GetPoint(distance);
-                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                cube.transform.position = new Vector3(worldPosition.x, worldPosition.y, worldPosition.z);
+                worldPosition = ray.GetPoint(distance);
                 Debug.Log(worldPosition);
             }
             else if (planeZ.Raycast(ray, out distance))
             {
                 Debug.Log("Z");
-                Vector3 worldPosition = ray.GetPoint(distance);
-                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                cube.transform.position = new Vector3(worldPosition.x, worldPosition.y, worldPosition.z);
+                worldPosition = ray.GetPoint(distance);
                 Debug.Log(worldPosition);
             }
-        }
-        /*if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 worldPosition = new Vector3(0, 0, 0);
-            Plane plane = new Plane(Vector3.up, 0);
-            float distance;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (plane.Raycast(ray, out distance))
+            /*GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cube.transform.position = new Vector3(worldPosition.x, worldPosition.y, worldPosition.z);*/
+            List<RaycastResult> results = new List<RaycastResult>();
+            _panelController.sendRaycast(results);
+            Debug.Log(results.Count);
+            if (results.Count == 0)
             {
-                worldPosition = ray.GetPoint(distance);
+                _lineController.setNewPoint(worldPosition);
             }
-            Camera.main.transform.Rotate(120, 0, 3);
-            Debug.Log($"{worldPosition.x} {worldPosition.y} {worldPosition.z}");
-            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            cube.transform.position = new Vector3(worldPosition.x, worldPosition.y, worldPosition.z);
-            Camera cam = Camera.main;
-            Camera newCam = Instantiate(Camera.main, new Vector3(0, 0, 0), Quaternion.identity);
-            newCam.gameObject.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z);
-            newCam.gameObject.transform.Rotate(cam.transform.rotation.x + 180, cam.transform.rotation.y + 180, cam.transform.rotation.z + 180);
-            Ray newRay = newCam.ScreenPointToRay(Input.mousePosition);
-            Vector3 newPos = newRay.GetPoint(distance);
-            Debug.Log($"{newPos.x} {newPos.y} {newPos.z}");
-            Destroy(newCam.gameObject);
-        }*/
+        }
     }
 }

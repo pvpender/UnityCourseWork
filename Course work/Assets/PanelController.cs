@@ -33,6 +33,14 @@ public class PanelController : MonoBehaviour
     PointerEventData m_PointerEventData;
     [SerializeField] EventSystem m_EventSystem;
 
+
+    public void sendRaycast(List<RaycastResult> results)
+    {
+        m_PointerEventData = new PointerEventData(m_EventSystem);
+        m_PointerEventData.position = Input.mousePosition;
+        m_Raycaster.Raycast(m_PointerEventData, results);
+    }
+
     private void Start()
     {
         this.gameObject.SetActive(false);
@@ -42,16 +50,19 @@ public class PanelController : MonoBehaviour
     {
         if (_status && Input.GetMouseButtonDown(0))
         {
-            m_PointerEventData = new PointerEventData(m_EventSystem);
-            m_PointerEventData.position = Input.mousePosition;
             List<RaycastResult> results = new List<RaycastResult>();
-            m_Raycaster.Raycast(m_PointerEventData, results);
+            sendRaycast(results);
             if ((results.Count > 0) && (results[0].gameObject.name == "Text_file"))
             {
                 reverseDiacticvated();
             }
-            this._status = !_status;
-            this.gameObject.SetActive(false);
+            if((results.Count == 0) || ((results.Count > 0) && (results[0].gameObject.name != "Text")))
+            {
+                this._status = !_status;
+                this.gameObject.SetActive(false);  
+            }
+                
         }
+
     }
 }
