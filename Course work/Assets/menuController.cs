@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using System.IO;
+
+
+
 
 public class menuController : MonoBehaviour
 { 
@@ -15,10 +17,10 @@ public class menuController : MonoBehaviour
     }
     public void export()
     {
-
         Debug.Log("da");
-        var path = EditorUtility.SaveFilePanel("Save texture as txt", "", "something.txt", "txt");
-        StreamWriter streamWriter = new StreamWriter(path, true);
+        //var path = EditorUtility.SaveFilePanel("Save texture as txt", "", "something.txt", "txt");
+        var path = "file.txt";
+        StreamWriter streamWriter = new StreamWriter(path);
         Vector3[] mas = new Vector3[lineRenderer.positionCount];
         lineRenderer.GetPositions(mas);
         foreach (Vector3 i in mas)
