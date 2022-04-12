@@ -8,6 +8,7 @@ public class lineController : MonoBehaviour
     private LineRenderer lineRenderer;
     private drawButtonController drawButtonController;
     public GameObject drawButton;
+    public GameObject changePoint;
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -25,6 +26,7 @@ public class lineController : MonoBehaviour
         {
             lineRenderer.positionCount++;
             lineRenderer.SetPosition(lineRenderer.positionCount-1, pointPosition);
+            Instantiate(changePoint, pointPosition, Quaternion.Euler(0, 0, 0));
         }
     }
 

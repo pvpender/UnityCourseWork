@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-
+using SFB;
 
 
 
@@ -19,7 +19,8 @@ public class menuController : MonoBehaviour
     {
         Debug.Log("da");
         //var path = EditorUtility.SaveFilePanel("Save texture as txt", "", "something.txt", "txt");
-        var path = "file.txt";
+
+        var path = StandaloneFileBrowser.SaveFilePanel("Save File", "", "MySaveFile", "txt");
         StreamWriter streamWriter = new StreamWriter(path);
         Vector3[] mas = new Vector3[lineRenderer.positionCount];
         lineRenderer.GetPositions(mas);
