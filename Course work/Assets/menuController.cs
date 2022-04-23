@@ -17,9 +17,6 @@ public class menuController : MonoBehaviour
     }
     public void export()
     {
-        Debug.Log("da");
-        //var path = EditorUtility.SaveFilePanel("Save texture as txt", "", "something.txt", "txt");
-
         var path = StandaloneFileBrowser.SaveFilePanel("Save File", "", "MySaveFile", "txt");
         StreamWriter streamWriter = new StreamWriter(path);
         Vector3[] mas = new Vector3[lineRenderer.positionCount];

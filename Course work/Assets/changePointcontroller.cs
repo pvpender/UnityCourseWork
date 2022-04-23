@@ -8,9 +8,12 @@ public class changePointcontroller : MonoBehaviour, IPointerDownHandler, IPointe
     private LineRenderer lineRenderer;
     public GameObject line;
     public int pointCount;
-    public void OnPointerDown(PointerEventData eventData) { 
-        test = true;
-        Debug.Log(pointCount);
+    public void OnPointerDown(PointerEventData eventData) {
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            test = true;
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -20,13 +23,19 @@ public class changePointcontroller : MonoBehaviour, IPointerDownHandler, IPointe
 
     void Start()
     {
+        transform.GetChild(0).gameObject.SetActive(false);
         lineRenderer = line.GetComponent<lineController>().GetComponent<LineRenderer>();
         pointCount = lineRenderer.positionCount-1;
+        Debug.Log(transform.childCount);
     }
 
-    // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetMouseButtonDown(0) && (!EventSystem.current.IsPointerOverGameObject()))
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+        }
         if (test)
         {
             Vector3 NewPosition = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0);
