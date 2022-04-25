@@ -63,7 +63,6 @@ public class cameraController : MonoBehaviour
             pos.y -= NewPosition.y * Mathf.Cos(transform.eulerAngles.x / 57.7f) * _sensitivityMove;
             //pos.z -= NewPosition.y * Mathf.Sin(transform.eulerAngles.x / 57.7f) * _sensitivityMove;
             transform.position = pos;
-
         }
         if (Input.GetMouseButtonDown(0))
         {
