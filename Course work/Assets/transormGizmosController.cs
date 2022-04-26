@@ -54,6 +54,7 @@ public class transormGizmosController : MonoBehaviour, IPointerDownHandler, IPoi
                 break;
         }
         lineRenderer.SetPosition(cpc.pointCount, pos);
+        cpc.coordinatePanelController.ChangeCoordinats(pos);
     }
 
     void Start()
