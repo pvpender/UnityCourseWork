@@ -1165,6 +1165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d21a7da0f97b7bb45a286643bbf89c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cpc: {fileID: 0}
   changePoint: {fileID: 687340933}
 --- !u!114 &660738860
 MonoBehaviour:
@@ -1362,7 +1363,7 @@ GameObject:
   - component: {fileID: 687340938}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: changePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1459,7 +1460,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 0}
   line: {fileID: 1230791444}
   panel: {fileID: 660738857}
-  coordinatePanelController: {fileID: 0}
+  coordinatePanelController: {fileID: 660738859}
   pointCount: 0
 --- !u!1 &705507993
 GameObject:
@@ -1829,7 +1830,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 955363559}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1784514882}
+        m_TargetAssemblyTypeName: menuController, Assembly-CSharp
+        m_MethodName: newProject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &955363559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3388,7 +3401,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1920957680}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1920957680
 MonoBehaviour:
   m_ObjectHideFlags: 0
