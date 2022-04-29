@@ -13,11 +13,12 @@ public class changePointcontroller : MonoBehaviour, IPointerDownHandler
     private List<string> _names = new List<string>() {"Sphere", "Sphere(Clone)", "tr  gizmo v2", "tr  gizmo v2 (1)", "tr  gizmo v2 (2)", "transform gizmos" };
     
     public void OnPointerDown(PointerEventData eventData) {
-        
+    
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            Debug.Log(eventData.lastPress);
-            coordinatePanelController.ChangeCoordinats(eventData.pointerCurrentRaycast.gameObject.transform.position); 
+            coordinatePanelController.ChangeCoordinats(eventData.pointerCurrentRaycast.gameObject.transform.position);
+            coordinatePanelController.cpc = this.gameObject.GetComponent<changePointcontroller>();
+            coordinatePanelController.changePoint = this.gameObject;
             panel.SetActive(true);
             transform.GetChild(0).gameObject.SetActive(true);
             if (eventData.lastPress != null)

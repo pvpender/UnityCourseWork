@@ -206,13 +206,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114848871}
   m_TextComponent: {fileID: 1489224648}
   m_Placeholder: {fileID: 1397616400}
-  m_ContentType: 0
+  m_ContentType: 3
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 2
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 2
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -907,13 +907,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 503034742}
   m_TextComponent: {fileID: 1932347583}
   m_Placeholder: {fileID: 1821943697}
-  m_ContentType: 0
+  m_ContentType: 3
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 2
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 2
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -1165,6 +1165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d21a7da0f97b7bb45a286643bbf89c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  changePoint: {fileID: 687340933}
 --- !u!114 &660738860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1286,13 +1287,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 671456749}
   m_TextComponent: {fileID: 1246355887}
   m_Placeholder: {fileID: 1022618578}
-  m_ContentType: 0
+  m_ContentType: 3
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 2
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 2
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -2052,7 +2053,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter text...
+  m_Text: 
 --- !u!222 &1022618579
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2432,7 +2433,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter text...
+  m_Text: 
 --- !u!222 &1397616401
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3296,7 +3297,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter text...
+  m_Text: 
 --- !u!222 &1821943698
 CanvasRenderer:
   m_ObjectHideFlags: 0
