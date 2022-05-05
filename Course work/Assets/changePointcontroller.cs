@@ -40,7 +40,7 @@ public class changePointcontroller : MonoBehaviour, IPointerDownHandler
         transform.GetChild(0).gameObject.SetActive(false);
         lineRenderer = line.GetComponent<lineController>().GetComponent<LineRenderer>();
         coordinatePanelController = panel.GetComponent<CoordinatePanelController>();
-        pointCount = lineRenderer.positionCount-1;
+        // pointCount = lineRenderer.positionCount-1;
     }
 
     void Update()

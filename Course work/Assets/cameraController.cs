@@ -96,5 +96,12 @@ public class cameraController : MonoBehaviour
                 _lineController.setNewPoint(worldPosition);
             }
         }
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                _lineController.undo();
+            }
+        }
     }
 }

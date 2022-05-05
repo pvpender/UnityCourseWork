@@ -26,7 +26,24 @@ public class lineController : MonoBehaviour
         {
             lineRenderer.positionCount++;
             lineRenderer.SetPosition(lineRenderer.positionCount-1, pointPosition);
-            Instantiate(changePoint, pointPosition, Quaternion.Euler(0, 0, 0));
+            var obj = Instantiate(changePoint, pointPosition, Quaternion.Euler(0, 0, 0));
+            obj.GetComponent<changePointcontroller>().pointCount = lineRenderer.positionCount - 1;
+        }
+    }
+
+    public void undo()
+    {
+        if (lineRenderer.positionCount > 1)
+        {
+            GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("changePoint");
+            foreach (GameObject i in gameObjects)
+            {
+                if(i.transform.position == lineRenderer.GetPosition(lineRenderer.positionCount - 1))
+                {
+                    Destroy(i);
+                }
+            }
+            lineRenderer.positionCount--;
         }
     }
 
