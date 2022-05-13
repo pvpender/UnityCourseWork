@@ -63,42 +63,44 @@ public class cameraController : MonoBehaviour
             pos.y -= NewPosition.y * Mathf.Cos(transform.eulerAngles.x / 57.7f) * _sensitivityMove;
             //pos.z -= NewPosition.y * Mathf.Sin(transform.eulerAngles.x / 57.7f) * _sensitivityMove;
             transform.position = pos;
-
         }
         if (Input.GetMouseButtonDown(0))
         {
             Plane planeX = new Plane(Vector3.up, 0);
-            Plane planeY = new Plane(Vector3.fwd, 0);
+            Plane planeY = new Plane(Vector3.forward, 0);
             Plane planeZ = new Plane(Vector3.left, 0);
             Vector3 worldPosition = new Vector3(0, 0, 0);
             float distance;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                EventSystem.current.SetSelectedGameObject(hit.collider.gameObject);
+            }
             if (planeX.Raycast(ray, out distance))
             {
-                Debug.Log("X");
                 worldPosition = ray.GetPoint(distance);
-                Debug.Log(worldPosition);
             }
             else if (planeY.Raycast(ray, out distance))
             {
-                Debug.Log("Y");
                 worldPosition = ray.GetPoint(distance);
-                Debug.Log(worldPosition);
             }
             else if (planeZ.Raycast(ray, out distance))
             {
-                Debug.Log("Z");
                 worldPosition = ray.GetPoint(distance);
-                Debug.Log(worldPosition);
             }
-            /*GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            cube.transform.position = new Vector3(worldPosition.x, worldPosition.y, worldPosition.z);*/
             List<RaycastResult> results = new List<RaycastResult>();
             _panelController.sendRaycast(results);
-            Debug.Log(results.Count);
             if (results.Count == 0)
             {
                 _lineController.setNewPoint(worldPosition);
+            }
+        }
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                _lineController.undo();
             }
         }
     }

@@ -11,10 +11,10 @@ public class ButtonController : MonoBehaviour
 
     public void showPanel()
     {
+        
         PanelController panelController = panel.GetComponent<PanelController>();
         _panelStatus = panelController.getStatus();
         _panelDiactivated = panelController.getDiactivated();
-        Debug.Log(_panelDiactivated);
         if (_panelDiactivated)
         {
             panelController.reverseDiacticvated();
