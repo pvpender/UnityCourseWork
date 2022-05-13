@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class controll : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public GameObject but;
+    private bool _active = false;
+    public GameObject picker;
+    public Button button;
+
+    /*public void reverseSetActive()
+    {
+        _active = !_active;
+        picker.SetActive(_active);
+    }*/
+
     void Start()
     {
-        but.SetActive(false);
+        picker.SetActive(false);
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        picker.SetActive(button.IsPressed());
     }
 }
