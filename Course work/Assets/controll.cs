@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class controll : MonoBehaviour
 {
@@ -20,6 +21,6 @@ public class controll : MonoBehaviour
     }
     void Update()
     {
-        picker.SetActive(button.IsPressed());
+        /*picker.SetActive(button.IsPressed());*/
     }
 }
