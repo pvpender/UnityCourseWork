@@ -972,9 +972,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 492671652}
-        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
-        m_MethodName: showPanel
+      - m_Target: {fileID: 1678039215}
+        m_TargetAssemblyTypeName: pickerControll, Assembly-CSharp
+        m_MethodName: reverseSetActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3806,21 +3806,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   picker: {fileID: 1678039209}
   button: {fileID: 492671649}
---- !u!114 &1678039216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1678039209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea0094370fb2b7c48bebd78e80428d84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controlButton: {fileID: 492671647}
-  m_Raycaster: {fileID: 1784514878}
-  m_EventSystem: {fileID: 559379157}
 --- !u!1001 &1680061262
 PrefabInstance:
   m_ObjectHideFlags: 0
