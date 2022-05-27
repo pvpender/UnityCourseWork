@@ -7,7 +7,6 @@ public class sliderController : MonoBehaviour
 {
     public Slider slider;
     public GameObject slider_show;
-    public GameObject sphere;
     public Button button;
 
     public void reverseSetActive()
@@ -30,6 +29,11 @@ public class sliderController : MonoBehaviour
         {
             slider_show.transform.position = new Vector3(375, 347, 0);
         }
-        sphere.transform.localScale = new Vector3(slider.value + 1, slider.value + 1, slider.value + 1);
+        GameObject[] gameObjects;
+        gameObjects = GameObject.FindGameObjectsWithTag("changePoint");
+        foreach (GameObject i in gameObjects)
+        {
+            i.transform.localScale = new Vector3(slider.value + 1, slider.value + 1, slider.value + 1);
+        }
     }
 }
