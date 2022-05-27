@@ -9,12 +9,14 @@ public class changePointcontroller : MonoBehaviour, IPointerDownHandler
     public GameObject line;
     public GameObject panel;
     public CoordinatePanelController coordinatePanelController;
+    public GameObject drawButton;
+    private drawButtonController _drawButtonController;
     public int pointCount;
     private List<string> _names = new List<string>() {"Sphere", "Sphere(Clone)", "tr  gizmo v2", "tr  gizmo v2 (1)", "tr  gizmo v2 (2)", "transform gizmos" };
     
     public void OnPointerDown(PointerEventData eventData) {
     
-        if (eventData.button == PointerEventData.InputButton.Left)
+        if ((eventData.button == PointerEventData.InputButton.Left) && (!_drawButtonController.GetDrawingStatus()))
         {
             coordinatePanelController.ChangeCoordinats(eventData.pointerCurrentRaycast.gameObject.transform.position);
             coordinatePanelController.cpc = this.gameObject.GetComponent<changePointcontroller>();
@@ -37,6 +39,7 @@ public class changePointcontroller : MonoBehaviour, IPointerDownHandler
 
     void Start()
     {
+        _drawButtonController = drawButton.GetComponent<drawButtonController>();
         transform.GetChild(0).gameObject.SetActive(false);
         lineRenderer = line.GetComponent<lineController>().GetComponent<LineRenderer>();
         coordinatePanelController = panel.GetComponent<CoordinatePanelController>();

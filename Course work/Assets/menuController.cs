@@ -106,7 +106,7 @@ public class menuController : MonoBehaviour
     public void load()
     {
         newProject();
-        var path = StandaloneFileBrowser.OpenFilePanel("Save", "", "bin", false);
+        var path = StandaloneFileBrowser.OpenFilePanel("Load", "", "bin", false);
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Open(path[0], FileMode.Open);
         SaveData data = (SaveData)bf.Deserialize(file);
@@ -122,7 +122,7 @@ public class menuController : MonoBehaviour
     }
     public void export()
     {
-        var path = StandaloneFileBrowser.SaveFilePanel("Save File", "", "MySaveFile", "txt");
+        var path = StandaloneFileBrowser.SaveFilePanel("Export", "", "MySaveFile", "txt");
         StreamWriter streamWriter = new StreamWriter(path);
         Vector3[] mas = new Vector3[lineRenderer.positionCount];
         lineRenderer.GetPositions(mas);

@@ -58,8 +58,9 @@ public class PanelController : MonoBehaviour
             }
             if((results.Count == 0) || ((results.Count > 0) && (results[0].gameObject.name != "Text")))
             {
-                if ((results.Count > 0) && (results[0].gameObject != controlButton.transform.GetChild(0).gameObject))
+                if ((results.Count > 0) && (results[0].gameObject != controlButton.transform.GetChild(0).gameObject) && (results[0].gameObject.name == "Text_file"))
                 {
+                    Debug.Log("adadad");
                     reverseDiacticvated();
                 }
                 this._status = !_status;
