@@ -58,6 +58,10 @@ public class PanelController : MonoBehaviour
             }
             if((results.Count == 0) || ((results.Count > 0) && (results[0].gameObject.name != "Text")))
             {
+                if ((results.Count > 0) & (results[0].gameObject != controlButton))
+                {
+                    reverseDiacticvated();
+                }
                 this._status = !_status;
                 this.gameObject.SetActive(false);  
             }
