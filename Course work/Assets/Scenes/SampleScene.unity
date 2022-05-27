@@ -600,7 +600,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 204181065}
   slider_show: {fileID: 204181062}
-  sphere: {fileID: 687340933}
   button: {fileID: 1794268788}
 --- !u!114 &204181065
 MonoBehaviour:
@@ -746,7 +745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0094370fb2b7c48bebd78e80428d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlButton: {fileID: 955363556}
+  controlButton: {fileID: 879345497}
   m_Raycaster: {fileID: 1784514878}
   m_EventSystem: {fileID: 559379157}
 --- !u!1 &297511561
