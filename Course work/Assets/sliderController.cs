@@ -23,11 +23,11 @@ public class sliderController : MonoBehaviour
     {
         if (button.IsActive())
         {
-            slider_show.transform.position = new Vector3(375, 347, 0);
+            slider_show.transform.position = new Vector3(375, 618, 0);
         }
         else
         {
-            slider_show.transform.position = new Vector3(375, 447, 0);
+            slider_show.transform.position = new Vector3(375, 718, 0);
         }
         GameObject[] gameObjects;
         gameObjects = GameObject.FindGameObjectsWithTag("changePoint");

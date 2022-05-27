@@ -86,6 +86,11 @@ public class menuController : MonoBehaviour
                 i.transform.position = Vector3.zero;
             }
         }
+        GameObject someObject;
+        someObject = GameObject.Find("CoordinatesPanel");
+        someObject.SetActive(false);
+        someObject = GameObject.Find("transform gizmos");
+        someObject.SetActive(false);
         lineRenderer.positionCount = 1;
         lineRenderer.SetPosition(0, Vector3.zero);
     }
